@@ -4,14 +4,22 @@
 
 // Bindings for python to understand object signature and treat as non-generic *
 %include "std_vector.i"
+%include "std_string.i"
+%include "cstring.i"
+%include "stdint.i"
+%include "inttypes.i"
+%include "stl.i"
+%include "shared_ptr.i"
+%include "pointer.i"
 
 // Defines the wrapper python uses to convert template type to python object
 namespace std
 {
-  %template(IntVector) vector<int>;
-  %template(DoubleVector) vector<double>;
-  %template(IntVector) vector<int>;
-  %template(IntVector) vector<int>;
+	// re-define dll export tag as nothing to allow compilation 
+    %define SHARED_DLL_API_TAG %enddef
+
+	%template(vectori) vector<int>;
+	%template(vectord) vector<double>;
 }
 
 // Add necessary symbols to generated header
