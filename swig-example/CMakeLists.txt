@@ -26,6 +26,8 @@ install(TARGETS ${PROJECT_NAME}
 		LIBRARY DESTINATION lib
 		ARCHIVE DESTINATION lib/static)
 			
+option(BUILD_BINDINGS "Build external SWIG module" OFF)
+			
 if(BUILD_BINDINGS)
     add_subdirectory(bindings/swig)
 endif()
