@@ -29,7 +29,8 @@ configuration to run anything that needs to be run in the target language.
 
 ---
 
-##### Use with another project
+### Use with another project
+
 (1) Copy the swig-example level CMake script and bindings into your target project source directory.
 (2) Edit the CMakeLists.txt script, line 5, and change the project name
 (3) Remove the external link to liba.lib, line 21
