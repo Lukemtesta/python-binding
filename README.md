@@ -30,12 +30,12 @@ configuration to run anything that needs to be run in the target language.
 ---
 
 ### Use with another project
+* Copy the swig-example level CMake script and bindings into your target project source directory.
+* Edit the CMakeLists.txt script, line 5, and change the project name
+* Remove the external link to liba.lib, line 21
+* Change the filename of the .i interface file to <project name>.i.
+* Change the C++ header files in swig-example.i to your target headers 
+* Run cmake with the BUILD_BINDINGS flag enabled
+* Build the generated IDE solution
 
-(1) Copy the swig-example level CMake script and bindings into your target project source directory.
-(2) Edit the CMakeLists.txt script, line 5, and change the project name
-(3) Remove the external link to liba.lib, line 21
-(4) Change the filename of the .i interface file to <project name>.i.
-(5) Change the C++ header files in swig-example.i to your target headers 
-(6) Run cmake with the BUILD_BINDINGS flag enabled
-(7) Build the generated IDE solution
 ---
