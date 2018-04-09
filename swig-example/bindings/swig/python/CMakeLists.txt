@@ -16,6 +16,7 @@ include_directories(${PYTHON_INCLUDE_PATH})
 
 # SWIG_ADD_MODULE(name language [ files ]) - creates a swig module (project) for the given name, 
 # in the format _{filename}, targetting the specified language. Links against the interface file .i
+# Expected interface file: <solution filename>.i
 swig_add_module(${PROJECT_NAME} python ../${PROJECT_NAME}.i)
 
 # SWIG_LINK_LIBRARIES(name [ libraries ]) link the swig module (project) against external 

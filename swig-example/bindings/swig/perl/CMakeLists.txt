@@ -11,11 +11,12 @@ set(CMAKE_SWIG_FLAGS "")
 set_source_files_properties(../${PROJECT_NAME}.i PROPERTIES CPLUSPLUS ON)
 
 # Add directory holding .h files to editors external include directory list
-include_directories(${CMAKE_SOURCE_DIR})
+include_directories(${CMAKE_SOURCE_DIR}/${PROJECT_NAME})
 include_directories(${PERL_INCLUDE_PATH})
 
 # SWIG_ADD_MODULE(name language [ files ]) - creates a swig module (project) for the given name, 
 # in the format _{filename}, targetting the specified language. Links against the interface file .i
+# Expected interface file: <solution filename>.i
 swig_add_module(${PROJECT_NAME} perl ../${PROJECT_NAME}.i)
 
 # SWIG_LINK_LIBRARIES(name [ libraries ]) link the swig module (project) against external 
