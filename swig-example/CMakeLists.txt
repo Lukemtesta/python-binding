@@ -18,10 +18,14 @@ add_library(${PROJECT_NAME} ${HDR_FILES} ${SRC_FILES})
 set_target_properties(${PROJECT_NAME} PROPERTIES LINKER_LANGUAGE CXX)
 
 # Create main and link to liba
-target_link_libraries(${PROJECT_NAME} ${HDR_FILES})
+target_link_libraries(${PROJECT_NAME} liba)
 
 # Add install target
 install(TARGETS ${PROJECT_NAME}
 		RUNTIME DESTINATION bin
 		LIBRARY DESTINATION lib
 		ARCHIVE DESTINATION lib/static)
+			
+if(BUILD_BINDINGS)
+    add_subdirectory(bindings/swig)
+endif()

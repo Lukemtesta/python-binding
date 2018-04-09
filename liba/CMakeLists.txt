@@ -17,7 +17,7 @@ add_library(${PROJECT_NAME} ${HDR_FILES} ${SRC_FILES} ${EXTERNAL_HDR_FILES})
 set_target_properties(${PROJECT_NAME} PROPERTIES LINKER_LANGUAGE CXX)
 
 # Create main and link to liba
-target_link_libraries(${PROJECT_NAME} ${HDR_FILES})
+target_link_libraries(${PROJECT_NAME})
 
 # Add install target
 install(TARGETS ${PROJECT_NAME}
