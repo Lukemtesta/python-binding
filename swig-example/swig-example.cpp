@@ -19,11 +19,6 @@ void blah()
 	std::cout << "blah" << std::endl;
 }
 
-void whatthefuck()
-{
-	std::cout << "whatthefuck" << std::endl;
-}
-
 void vector_print()
 {
 	std::cout << "vector print" << std::endl;
