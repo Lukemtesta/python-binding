@@ -8,13 +8,13 @@ find_package(SWIG REQUIRED)
 include(${SWIG_USE_FILE})
 
 # Add subdirectories for each language if desired
-option(BUILD_PYTHON "Build Python SWIG module" OFF)
-option(BUILD_PERL "Build Python SWIG module" OFF)
+option(BUILD_PYTHON "Build Python SWIG module" ON)
+option(BUILD_PERL "Build Perl SWIG module" OFF)
 
 if(BUILD_PYTHON)
     add_subdirectory(python)
 endif()
 
-if(BUILD_PYTHON)
+if(BUILD_PERL)
     add_subdirectory(perl)
 endif()

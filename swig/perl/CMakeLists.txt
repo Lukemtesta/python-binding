@@ -11,7 +11,7 @@ set(CMAKE_SWIG_FLAGS "")
 set_source_files_properties(../${PROJECT_NAME}.i PROPERTIES CPLUSPLUS ON)
 
 # Add directory holding .h files to editors external include directory list
-include_directories(../..)
+include_directories(${CMAKE_SOURCE_DIR})
 include_directories(${PERL_INCLUDE_PATH})
 
 # SWIG_ADD_MODULE(name language [ files ]) - creates a swig module (project) for the given name, 
@@ -24,7 +24,7 @@ swig_link_libraries(${PROJECT_NAME} ${PROJECT_NAME} ${PERL_LIBRARY})
 
 # Post build event to copy auto-generated 
 add_custom_command(
-TARGET _swig_example 
+TARGET "_${PROJECT_NAME}"
 POST_BUILD
 COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.py ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.py
 )
