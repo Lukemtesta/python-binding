@@ -29,12 +29,14 @@ wrappers.
 
 ### How-To Add a New Language
 * Duplicate a language binding function and rename accordingly i.e. PythonFunctions.cmake -> PerlFunctions.cmake
-* Add an option and condition to call add_bindings_<language> in bindings/swig level CMakeLists.txt (see BUILD_PYTHON in this file)
-* Change the new functions find_package, swig_add_modules and ${PYTHON_LIBRARIES} macros to target language 
+* Change the new functions find_package, swig_add_modules and ${PYTHON_LIBRARIES} macros to target language
 
 ```
 i.e. find_package(PerlLibs), swig_add_modules(... perl *.i), swig_link_libraries(${PERL_LIBRARIES})
 ```
+
+* Add a CMake option for the language in bindings/swig level CMakeLists.txt and call the new function (see BUILD_PYTHON in this file)
+
 
 ---
 
