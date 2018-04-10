@@ -1,6 +1,6 @@
-# If CMake not auto-pointing to PythonLibs set...
-# -DPERL_INCLUDE_DIR=<python path>\include 
-# -DPERL_LIBRARY=<python path>\lib
+# If CMake not auto-pointing to PerlLibs set...
+# -DPERL_INCLUDE_DIR=<perl path>\include 
+# -DPERL_LIBRARY=<perl path>\lib
 
 function (
 	add_bindings_perl
@@ -8,10 +8,14 @@ function (
 	INTERFACE_FILES
 	EXTERNAL_INCLUDE_DIRS)
 
-	# Include python
+	# Locate swig and python dependencies
+	find_package(SWIG REQUIRED)
 	find_package(PerlLibs REQUIRED)
-
+	
 	set(CMAKE_SWIG_FLAGS "")
+
+	# Add swig CMake functions
+	include(${SWIG_USE_FILE})
 
 	# swig interface file containing the C/C++ function signatures to link against
 	set_source_files_properties(${INTERFACE_FILES} PROPERTIES CPLUSPLUS ON)

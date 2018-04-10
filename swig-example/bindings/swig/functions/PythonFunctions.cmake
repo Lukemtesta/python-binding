@@ -1,17 +1,22 @@
 # If CMake not auto-pointing to PythonLibs set...
 # -DPYTHON_INCLUDE_DIR=<python path>\include 
 # -DPYTHON_LIBRARY=<python path>\lib
+# For a tutorial see: https://cmake.org/cmake/help/v3.0/module/FindPythonLibs.html
 
 function(
 	add_bindings_python
 	TARGET_PROJECT_NAME
 	INTERFACE_FILES
 	EXTERNAL_INCLUDE_DIRS)
-
-	# Include python
+	
+	# Locate swig and python dependencies
+	find_package(SWIG REQUIRED)
 	find_package(PythonLibs REQUIRED)
-
+	
 	set(CMAKE_SWIG_FLAGS "")
+
+	# Add swig CMake functions
+	include(${SWIG_USE_FILE})
 
 	# swig interface file containing the C/C++ function signatures to link against
 	set_source_files_properties(${INTERFACE_FILES} PROPERTIES CPLUSPLUS ON)

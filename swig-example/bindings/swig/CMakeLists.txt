@@ -1,11 +1,6 @@
 
-# https://cmake.org/cmake/help/v3.0/module/FindPythonLibs.html
-cmake_minimum_required( VERSION 2.7 )
+cmake_minimum_required( VERSION 3.5 )
 
-# Set up swig
-find_package(SWIG REQUIRED)
-
-include(${SWIG_USE_FILE})
 
 # Include cmake binding functions
 file(GLOB_RECURSE CMAKE_FUNCTIONS "functions/*.cmake")
