@@ -28,10 +28,8 @@ wrappers.
 * Import the auto-generated python module swig-example.py into a python console or script. Ensure you have the generated .lib and .pyd files in the working directory (and .dll if you are linking against shared libraries).
 
 ### How-To Add a New Language
-* Duplicate the python folder at the same directory level
-* Rename to target language i.e. 'perl'
-* Duplicate a language binding function i.e. PythonFunctions.cmake
-* Add an option and condition to call add_binginds_<language> in current level CMakeLists.txt (see BUILD_PYTHON in this file)
+* Duplicate a language binding function and rename accordingly i.e. PythonFunctions.cmake -> PerlFunctions.cmake
+* Add an option and condition to call add_bindings_<language> in bindings/swig level CMakeLists.txt (see BUILD_PYTHON in this file)
 * Change the new functions find_package, swig_add_modules and ${PYTHON_LIBRARIES} macros to target language 
 
 ```
