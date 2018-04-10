@@ -5,11 +5,11 @@ cmake_minimum_required(VERSION 3.5)
 project(swig-example)
 
 # Locate header and source files
-file(GLOB HDR_FILES ${CMAKE_SOURCE_DIR} "*.h")
-file(GLOB SRC_FILES ${CMAKE_SOURCE_DIR} "*.cpp")
+file(GLOB_RECURSE HDR_FILES ${CMAKE_SOURCE_DIR} "*.h")
+file(GLOB_RECURSE SRC_FILES ${CMAKE_SOURCE_DIR} "*.cpp")
 
 # Point to external header files 
-include_directories(${CMAKE_SOURCE_DIR}/liba)
+include_directories("${CMAKE_SOURCE_DIR}/liba/third party")
 
 # Create module and add files in IDE for liba and swig_example
 add_library(${PROJECT_NAME} ${HDR_FILES} ${SRC_FILES})

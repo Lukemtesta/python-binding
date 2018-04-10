@@ -7,8 +7,8 @@ project(liba)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y -Wall -fPIC")
 
 # Locate header and source files
-file(GLOB HDR_FILES ${CMAKE_SOURCE_DIR} "*.h")
-file(GLOB SRC_FILES ${CMAKE_SOURCE_DIR} "*.cpp")
+file(GLOB_RECURSE HDR_FILES ${CMAKE_SOURCE_DIR} "*.h")
+file(GLOB_RECURSE SRC_FILES ${CMAKE_SOURCE_DIR} "*.cpp")
 
 # Create module and add files in IDE for liba and swig_example
 add_library(${PROJECT_NAME} ${HDR_FILES} ${SRC_FILES} ${EXTERNAL_HDR_FILES})
