@@ -16,14 +16,15 @@ wrappers.
 * [CMake 3.5 or later](https://cmake.org/download/)
 * [Swig 3.0.12 or later](http://www.swig.org/download.html)
 
-### How-To Create bindings for default project
+### How-To Create Bindings
 * Install Python - Enable 'Add To System Path' in the installer for cmake find_package
 * Download Swig 3.0.12 (Pre-compiled for windows) and add swig.exe to system path 
 * Run 'python' and 'swig' on command line console to verify above is successful
-* Configure CMake targetting root folder containing swig-example and liba folders
+* Configure CMake targetting the root folder of swig-example and liba
 * Enable -DBUILD_BINDINGS cmake flag
 * Configure 
 * Build 
+* Import the auto-generated python module swig-example.py. Ensure you have the generated .lib and .pyd files in the working directory (and .dll if you are linking against shared libraries).
 
 ### How-To Add a New Language
 * Duplicate the python folder at the same directory level
