@@ -58,15 +58,11 @@ See How-to Add a New Language section on adding new languages.
 
 ---
 
-### Use with another project
-* Copy the swig-example level CMake script and bindings directory into your target project directory.
-* Edit the CMakeLists.txt script, line 5, and change the project name
-* Change the external link to your project dependencies, liba.lib in line 21
-* Add the include directory to external header files, line 12
-* Change the filename of the .i interface file to <project name>.i.
-* Change the C++ header files in swig-example.i to your target headers 
-* Change the external include directory, third parameter of add_bindings_<language> CMake function calls in /bindings/swig/CMakeLists.txt
-* Run cmake with the BUILD_BINDINGS flag enabled
-* Build the generated IDE solution
+### How-To Build Bindings for a Different Project
+* Copy the swig-example level bindings directory into your target project directory.
+* In your project CMakeLists.txt script, include all .cmake files in the bindings/swig/functions directory using CMake include (see bindings/swig/CMakeLists.txt lines 6-11)
+* Change the name of the /binding/swig/*.i file to the project name
+* Call the add_bindings_<language> CMake function with the parameters: ${PROJECT_NAME}, ${PROJECT_NAME}.i and external header include directory (Empty if none)
+* Configure and Build the generated IDE solution
 
 ---
