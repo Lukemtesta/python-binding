@@ -23,14 +23,16 @@ wrappers.
 * Configure CMake targetting the root folder of swig-example and liba
 * Enable -DBUILD_BINDINGS cmake flag
 * Configure 
-* Build 
-* Import the auto-generated python module swig-example.py. Ensure you have the generated .lib and .pyd files in the working directory (and .dll if you are linking against shared libraries).
+* Generate projects
+* Build in Release
+* Import the auto-generated python module swig-example.py into a python console or script. Ensure you have the generated .lib and .pyd files in the working directory (and .dll if you are linking against shared libraries).
 
 ### How-To Add a New Language
 * Duplicate the python folder at the same directory level
 * Rename to target language i.e. 'perl'
-* Add an option and condition to add_directory in current level CMakeLists.txt (see BUILD_PYTHON in this file)
-* Change the CMakeLists.txt in the duplicated folder find_package, swig_add_modules and ${PYTHON_LIBRARIES} macros to target language 
+* Duplicate a language binding function i.e. PythonFunctions.cmake
+* Add an option and condition to call add_binginds_<language> in current level CMakeLists.txt (see BUILD_PYTHON in this file)
+* Change the new functions find_package, swig_add_modules and ${PYTHON_LIBRARIES} macros to target language 
 
 ```
 i.e. find_package(PerlLibs), swig_add_modules(... perl *.i), swig_link_libraries(${PERL_LIBRARIES})
@@ -57,12 +59,13 @@ See How-to Add a New Language section on adding new languages.
 ---
 
 ### Use with another project
-* Copy the swig-example level CMake script and bindings into your target project source directory.
+* Copy the swig-example level CMake script and bindings directory into your target project directory.
 * Edit the CMakeLists.txt script, line 5, and change the project name
-* Remove the external link to liba.lib, line 21
-* Add the include directory to external header files, line 14
+* Change the external link to your project dependencies, liba.lib in line 21
+* Add the include directory to external header files, line 12
 * Change the filename of the .i interface file to <project name>.i.
 * Change the C++ header files in swig-example.i to your target headers 
+* Change the external include directory, third parameter of add_bindings_<language> CMake function calls in /bindings/swig/CMakeLists.txt
 * Run cmake with the BUILD_BINDINGS flag enabled
 * Build the generated IDE solution
 
