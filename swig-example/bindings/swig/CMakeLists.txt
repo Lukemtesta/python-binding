@@ -7,14 +7,22 @@ find_package(SWIG REQUIRED)
 
 include(${SWIG_USE_FILE})
 
-# Add subdirectories for each language if desired
+# Include cmake binding functions
+file(GLOB_RECURSE CMAKE_FUNCTIONS "functions/*.cmake")
+
+# CMake doesn't support include multiple CMake execution files
+foreach( FUNCTION_FILE ${CMAKE_FUNCTIONS} )
+	include( ${FUNCTION_FILE} )
+endforeach()
+
+
 option(BUILD_PYTHON "Build Python SWIG module" ON)
 option(BUILD_PERL "Build Perl SWIG module" OFF)
 
 if(BUILD_PYTHON)
-    add_subdirectory(python)
+    add_bindings_python(${PROJECT_NAME} ${PROJECT_NAME}.i ${CMAKE_SOURCE_DIR}/${PROJECT_NAME})
 endif()
 
 if(BUILD_PERL)
-    add_subdirectory(perl)
+    add_bindings_perl(${PROJECT_NAME} ${PROJECT_NAME}.i ${CMAKE_SOURCE_DIR}/${PROJECT_NAME})
 endif()
