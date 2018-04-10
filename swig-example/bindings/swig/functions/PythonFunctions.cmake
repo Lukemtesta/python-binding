@@ -9,6 +9,9 @@ function(
 	INTERFACE_FILES
 	EXTERNAL_INCLUDE_DIRS)
 	
+	# Setup flags for swig binding
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y -Wall -fPIC")
+	
 	# Locate swig and python dependencies
 	find_package(SWIG REQUIRED)
 	find_package(PythonLibs REQUIRED)
