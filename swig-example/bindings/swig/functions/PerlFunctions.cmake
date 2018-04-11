@@ -6,7 +6,9 @@ function (
 	add_bindings_perl
 	TARGET_PROJECT_NAME 
 	INTERFACE_FILES
-	EXTERNAL_INCLUDE_DIRS)
+	EXTERNAL_INCLUDE_DIRS
+	EXTERNAL_LIBS
+	PREPROCESSOR_DEFINES)
 	
 	# Setup flags for swig binding
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y -Wall -fPIC")
@@ -21,6 +23,7 @@ function (
 	include(${SWIG_USE_FILE})
 
 	# swig interface file containing the C/C++ function signatures to link against
+	add_definitions(${PREPROCESSOR_DEFINES})
 	set_source_files_properties(${INTERFACE_FILES} PROPERTIES CPLUSPLUS ON)
 
 	# Add directory holding .h files to editors external include directory list
@@ -33,6 +36,6 @@ function (
 
 	# SWIG_LINK_LIBRARIES(name [ libraries ]) link the swig module (project) against external 
 	# dependencies (.lib)
-	swig_link_libraries(${TARGET_PROJECT_NAME} ${TARGET_PROJECT_NAME} ${PERL_LIBRARIES})
+	swig_link_libraries(${TARGET_PROJECT_NAME} ${TARGET_PROJECT_NAME} ${EXTERNAL_LIBS} ${PERL_LIBRARIES})
 
 endfunction(add_bindings_perl)
