@@ -40,8 +40,8 @@ function (
 	
 	# Copy auto-generated script to lib directory
 	add_custom_command(
-    TARGET "_${TARGET_PROJECT_NAME}" 
-    POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_BINARY_DIR}/bindings/swig/${TARGET_PROJECT_NAME}.perl $<TARGET_FILE_DIR:_${TARGET_PROJECT_NAME}>)
+		TARGET "_${TARGET_PROJECT_NAME}" 
+		POST_BUILD
+		COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_BINARY_DIR}/bindings/swig/${TARGET_PROJECT_NAME}.perl $<TARGET_FILE_DIR:_${TARGET_PROJECT_NAME}>)
 
 endfunction(add_bindings_perl)
