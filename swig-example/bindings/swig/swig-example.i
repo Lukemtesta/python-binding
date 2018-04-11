@@ -12,10 +12,13 @@
 %include "shared_ptr.i"
 %include "pointer.i"
 
+// Include %windows.i to interprete non-C++ standard keywords on windows i.e. __stdcall, _declspec
+
 // Defines the wrapper python uses to convert template type to python object
 namespace std
 {
-	// re-define dll export tag as nothing to allow compilation 
+	// re-define dll export tag for sake of getting past swig pre-compilation checks
+	// Still requires PREPROCESSORS to be defined in bindings project i.e. ifdef API_ENABLED #define ...
     %define SHARED_DLL_API_TAG %enddef
 
 	%template(vectori) vector<int>;
@@ -23,8 +26,18 @@ namespace std
 }
 
 // Add necessary symbols to generated header
+// Swig does not have recursive include - Must specify all python export targets
 %{
 #include "swig-example.h"
+%}
+
+// Wrapper function declarations may be included here from external .i, or defined here
+%inline
+%{
+	std::vector<double> example_initialise_wrapper(std::int32_t i_count)
+	{
+		return std::vector<double>(i_count, 0);
+	}
 %}
 
 // Enforce access by value: %naturalvar Test::method
