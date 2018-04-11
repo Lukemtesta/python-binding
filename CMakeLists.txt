@@ -1,4 +1,4 @@
-#Run via command line: cmake .. -G "Visual Studio 15 Win64" -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_BINDINGS=ON
+#Run via command line: cmake .. -G "Visual Studio 15 Win64" -DCMAKE_BUILD_TYPE=RELEASE
 
 cmake_minimum_required(VERSION 3.5)
 
