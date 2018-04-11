@@ -32,6 +32,7 @@ namespace std
 %}
 
 // Wrapper function declarations may be included here from external .i, or defined here
+// Generally only needed for custom complex types not defined in std standard
 %inline
 %{
 	std::vector<double> example_initialise_wrapper(std::int32_t i_count)
