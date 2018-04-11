@@ -68,3 +68,8 @@ See How-to Add a New Language section on adding new languages.
 * Configure and Build the generated IDE solution
 
 ---
+
+### License
+Protected under the Apache 2.0 License
+
+---
