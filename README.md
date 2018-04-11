@@ -62,6 +62,7 @@ See How-to Add a New Language section on adding new languages.
 * Copy the swig-example level bindings directory into your target project directory.
 * In your project CMakeLists.txt script, include all .cmake files in the bindings/swig/functions directory using CMake include (see bindings/swig/CMakeLists.txt lines 6-11)
 * Change the name of the /binding/swig/*.i file to the project name
+* Change the module name, /binding/swig/*.i line 3, to project name (to match the interface name)
 * Change the name of the binding headers in the /binding/swig/*.i file to the target C++11 headers to bind
 * Call the add_bindings_<language> CMake function with the parameters: ${PROJECT_NAME}, ${PROJECT_NAME}.i, path to external library headers, path to external lib files, preprocessor macros (i.e. declspec conditions) - Mark any unused parameters as empty.
 * Configure and Build the generated IDE solution
