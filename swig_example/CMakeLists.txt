@@ -2,7 +2,7 @@
 
 cmake_minimum_required(VERSION 3.5)
 
-project(swig-example)
+project(swig_example)
 
 # Locate header and source files
 file(GLOB_RECURSE HDR_FILES ${CMAKE_SOURCE_DIR} "*.h")

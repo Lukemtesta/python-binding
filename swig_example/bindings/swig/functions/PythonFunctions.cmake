@@ -38,5 +38,11 @@ function(
 	# SWIG_LINK_LIBRARIES(name [ libraries ]) link the swig module (project) against external 
 	# dependencies (.lib)
 	swig_link_libraries(${TARGET_PROJECT_NAME} ${TARGET_PROJECT_NAME} ${EXTERNAL_LIBS} ${PYTHON_LIBRARIES})
+		
+	# Copy auto-generated script to lib directory
+	add_custom_command(
+    TARGET "_${TARGET_PROJECT_NAME}" 
+    POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_BINARY_DIR}/bindings/swig/${TARGET_PROJECT_NAME}.py $<TARGET_FILE_DIR:_${TARGET_PROJECT_NAME}>)
 
 endfunction(add_bindings_python)
