@@ -1,4 +1,5 @@
 
+# until cmake_parse_arguments dropping "" hotfix is released
 cmake_minimum_required( VERSION 3.5 )
 
 
@@ -12,7 +13,8 @@ endforeach()
 
 # Set target project properties
 set(EXTERNAL_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/${PROJECT_NAME}/third party")
-set(EXTERNAL_LIBS " ")
+set(EXTERNAL_LIBS liba)
+# work-around for cmake_parse_arguments dropping empty strings
 set(PREPROCESSOR_DEFINES " ")
 
 # Optional bindings
